@@ -16,9 +16,9 @@ for j in range(len(d)):
     print(Back.MAGENTA + f"{d[j]}\n")
     for i in range(len(list(Path(f"samples/{d[j]}/").iterdir()))):
         print(Back.CYAN + f"test {i}: ", end="")
-        subprocess.call(["java", "-jar", "tester.jar", f"samples/{d[j]}/in{i}.txt", f"out_ref{i}.txt"])
+        subprocess.call(["java", "-jar", "tester.jar", f"samples/{d[j]}/in{i}.txt", f"samples/{d[j]}/out_ref{i}.txt"])
         subprocess.run([sys.argv[1], f"samples/{d[j]}/in{i}.txt", f"out{i}.txt"])
-        with open(f"out_ref{i}.txt") as first, open(f"out{i}.txt") as second:
+        with open(f"samples/{d[j]}/out_ref{i}.txt") as first, open(f"out{i}.txt") as second:
             fl = True
             pairs = list(zip(first.readlines(), second.readlines()))
             cnt = 1
@@ -37,6 +37,7 @@ for j in range(len(d)):
                 print(Style.RESET_ALL)
 
         os.remove(f"out{i}.txt")
-        os.remove(f"out_ref{i}.txt")
+        if fl:
+            os.remove(f"samples/{d[j]}/out_ref{i}.txt")
     print()
 
