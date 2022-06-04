@@ -17,8 +17,8 @@ total = 0
 
 for j in range(len(d)):
     print(Back.MAGENTA + f"{d[j]}\n")
-    try:
-        for i in range(len(list(Path(f"samples/{d[j]}/").iterdir()))):
+    for i in range(len(list(Path(f"samples/{d[j]}/").iterdir()))):
+        try:
             total += 1
             print(Back.CYAN + f"test {i}: ", end="")
             subprocess.call(["java", "-jar", "tester.jar", f"samples/{d[j]}/in{i}.txt", f"out_ref{i}.txt"])
@@ -44,9 +44,9 @@ for j in range(len(d)):
 
             os.remove(f"out{i}.txt")
             os.remove(f"out_ref{i}.txt")
-    except FileNotFoundError:
-        print(Back.RED + "Выходной файл не создался, что скорее всего значит программа упала", end="")
-        os.remove(f"out_ref{i}.txt")
+        except FileNotFoundError:
+            print(Back.RED + "Выходной файл не создался, что скорее всего значит программа упала", end="")
+            os.remove(f"out_ref{i}.txt")
     print()
 
 print(Back.MAGENTA + f"Total count: {count}/{total}")
