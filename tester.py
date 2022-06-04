@@ -45,7 +45,7 @@ for j in range(len(d)):
             os.remove(f"out{i}.txt")
             os.remove(f"out_ref{i}.txt")
     except FileNotFoundError:
-        print("Выходной файл не создался, что скорее всего значит программа упала")
+        print(Back.RED + "Выходной файл не создался, что скорее всего значит программа упала", end="")
         os.remove(f"out_ref{i}.txt")
     print()
 
