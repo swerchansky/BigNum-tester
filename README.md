@@ -8,7 +8,7 @@
 + запускаем из командной строки: `python tester.py {название файла}.exe`
 + Чтобы узнать правильный ответ на тест нужно запустить tester.jar с указанием входного и выходного файла
 
-  Пример `java -jar tester.jar "samples/div tests/in0.txt" "out.txt"`
+  Пример `java -jar tester.jar "samples/div tests/in0.txt" "out.txt"`, где ответ будет в out.txt
 
 ### добавление тестов
 
