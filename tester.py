@@ -53,7 +53,7 @@ if len(sys.argv) == 2:
                 os.remove(f"out_ref.txt")
         print()
 
-    print(Back.MAGENTA + f"Total count: {count}/{total}")
+    # print(Back.MAGENTA + f"Total count: {count}/{total}")
 
 else:
     print(Back.MAGENTA + f"{sys.argv[2]}\n")
