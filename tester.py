@@ -17,13 +17,15 @@ total = 0
 
 for j in range(len(d)):
     print(Back.MAGENTA + f"{d[j]}\n")
-    for i in range(len(list(Path(f"samples/{d[j]}/").iterdir()))):
+    ls = os.listdir(f"samples/{d[j]}/")
+    for i in range(len(ls)):
         try:
             total += 1
-            print(Back.CYAN + f"test {i}: ", end="")
-            subprocess.call(["java", "-jar", "tester.jar", f"samples/{d[j]}/in{i}.txt", f"out_ref{i}.txt"])
-            subprocess.run([sys.argv[1], f"samples/{d[j]}/in{i}.txt", f"out{i}.txt"])
-            with open(f"out_ref{i}.txt") as first, open(f"out{i}.txt") as second:
+            print(Back.CYAN + f"test {ls[i]}: ", end="")
+            st = str(ls[i])
+            subprocess.call(["java", "-jar", "tester.jar", f"samples/{d[j]}/" + st, f"out_ref.txt"])
+            subprocess.run([sys.argv[1], f"samples/{d[j]}/" + st, f"out.txt"])
+            with open(f"out_ref.txt") as first, open(f"out.txt") as second:
                 fl = True
                 pairs = list(zip(first.readlines(), second.readlines()))
                 cnt = 1
@@ -42,12 +44,12 @@ for j in range(len(d)):
                     print(Back.RED + "Failed", end="")
                     print(Style.RESET_ALL)
 
-            os.remove(f"out{i}.txt")
-            os.remove(f"out_ref{i}.txt")
+            os.remove(f"out.txt")
+            os.remove(f"out_ref.txt")
         except FileNotFoundError:
             print(Back.RED + "Выходной файл не создался, что скорее всего значит программа упала", end="")
             print(Style.RESET_ALL)
-            os.remove(f"out_ref{i}.txt")
+            os.remove(f"out_ref.txt")
     print()
 
 print(Back.MAGENTA + f"Total count: {count}/{total}")
