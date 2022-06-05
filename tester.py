@@ -10,7 +10,7 @@ from colorama import Style
 colorama.init()
 
 d = {0: "git tests", 1: "plus tests", 2: "minus tests", 3: "mult tests", 4: "div tests", 5: "module tests",
-     6: "sqrt tests", 7: "compare tests", 8: "random tests"}
+     6: "sqrt tests", 7: "compare tests", 8: "random tests", 9: "freaky tests"}
 
 count = 0
 total = 0
@@ -47,7 +47,7 @@ for j in range(len(d)):
             os.remove(f"out.txt")
             os.remove(f"out_ref.txt")
         except FileNotFoundError:
-            print(Back.RED + "Выходной файл не создался, что скорее всего значит программа упала", end="")
+            print(Back.RED + "Выходной файл не создался (программа упала)", end="")
             print(Style.RESET_ALL)
             os.remove(f"out_ref.txt")
     print()
