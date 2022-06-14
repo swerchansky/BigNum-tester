@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 import subprocess
 import sys
@@ -15,9 +16,12 @@ d = {0: "git tests", 1: "plus tests", 2: "minus tests", 3: "mult tests", 4: "div
 count = 0
 total = 0
 
+start_time = datetime.now()
+
 if len(sys.argv) == 2:
     for j in range(len(d)):
         print(Back.MAGENTA + f"{d[j]}\n")
+        test_time = datetime.now()
         ls = os.listdir(f"samples/{d[j]}/")
         for i in range(len(ls)):
             try:
@@ -51,6 +55,9 @@ if len(sys.argv) == 2:
                 print(Back.RED + "Выходной файл не создался (программа упала)", end="")
                 print(Style.RESET_ALL)
                 os.remove(f"out_ref.txt")
+        print(Style.RESET_ALL)
+        print(Back.MAGENTA + f"time: {datetime.now() - test_time}")
+        print(Style.RESET_ALL)
         print()
 
     # print(Back.MAGENTA + f"Total count: {count}/{total}")
@@ -93,3 +100,6 @@ else:
     print()
 
 print(Back.MAGENTA + f"Total count: {count}/{total}")
+print(Style.RESET_ALL)
+print(Back.MAGENTA + f"Total time: {datetime.now() - start_time}")
+print(Style.RESET_ALL)
