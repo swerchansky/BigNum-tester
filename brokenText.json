@@ -1,5 +1,4 @@
 {"v":"5.11.0","fr":25,"ip":0,"op":132,"w":140,"h":140,"nm":"MAKET","ddd":0,"assets":[{
-    "f": "TestFont", 
     "nm": "Text Layer",
     "ty": 5,
     "sr": 1,
@@ -21,7 +20,7 @@
             "k": [
                 {
                     "s": {
-                        "f": "Ubuntu Light Italic",
+                        "f": "TestFontUnexcpected",
                         "fc": [
                             0,
                             0,
